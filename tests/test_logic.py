@@ -92,3 +92,20 @@ def test_format_picks():
     c = screener.evaluate("TEST", make_daily())
     msg = screener.format_picks([c], {"TEST": "Test & Co Ltd"})
     assert "Test &amp; Co" in msg and "Not financial advice" in msg
+
+
+def test_intraday_volume_is_scaled():
+    df = make_daily()
+    df.iloc[-1, df.columns.get_loc("Volume")] = 1_600_000.0  # 0.8x a full day by 11:00
+    assert screener.evaluate("TEST", df) is None
+    assert screener.evaluate("TEST", df, session_fraction=0.3) is not None
+
+
+def test_intraday_pick_ignores_bars_before_it():
+    p = pos(created="2026-01-06", created_at="2026-01-06T11:00:00+05:30")
+    b = bars([(100, 101, 99, 100.5), (99.5, 99.9, 99.2, 99.6)], start="2026-01-06 10:55")
+    tracker.process_bars(p, b)
+    assert p["status"] == "pending"  # the 10:55 bar crossed entry but came before the pick
+    b2 = bars([(100.5, 101.2, 100.3, 101)], start="2026-01-06 11:10")
+    tracker.process_bars(p, b2)
+    assert p["status"] == "open"

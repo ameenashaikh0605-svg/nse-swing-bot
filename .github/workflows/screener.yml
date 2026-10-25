@@ -1,13 +1,16 @@
-name: Daily screener
+name: Screener
 
 on:
   schedule:
-    # 16:00 IST, Monday to Friday. Holidays are detected in code and skipped.
+    # Scans at 11:00 and 13:00 IST, end-of-day summary at 16:00 IST, Monday to Friday.
+    # Holidays are detected in code and skipped. GitHub may start runs a few minutes late.
+    - cron: "30 5 * * 1-5"
+    - cron: "30 7 * * 1-5"
     - cron: "30 10 * * 1-5"
   workflow_dispatch:
     inputs:
       force:
-        description: "Run even if NSE had no session today"
+        description: "Scan now, even outside market hours or on a holiday"
         type: boolean
         default: false
 

@@ -1,7 +1,8 @@
-"""End-of-day screener: finds swing setups across the Nifty 500 and posts the best ones to Telegram.
+"""Screener: finds swing setups across the Nifty 500 and posts the best ones to Telegram.
 
-Run after the close (around 16:00 IST). Each pick is a buy-stop: it becomes a position only if
-price trades above the entry trigger in the next sessions.
+Scans run during the session (11:00 and 13:00 IST) on the day's bars so far. A run after the
+close (16:00 IST) only expires stale picks, applies time exits and posts a summary.
+Each pick is a buy-stop: it becomes a position only if price trades above the entry trigger.
 """
 
 import datetime as dt
@@ -11,9 +12,16 @@ import pandas as pd
 
 from . import catalysts, config, data, indicators, state, telegram, tracker
 
+IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
+SESSION_OPEN, SESSION_CLOSE = dt.time(9, 15), dt.time(15, 30)
 
-def evaluate(symbol: str, df: pd.DataFrame) -> dict | None:
-    """Return a candidate setup for one stock's daily bars, or None if nothing qualifies."""
+
+def evaluate(symbol: str, df: pd.DataFrame, session_fraction: float = 1.0) -> dict | None:
+    """Return a candidate setup for one stock's daily bars, or None if nothing qualifies.
+
+    During the session the last bar is partial, so its volume is compared with the share of a
+    normal day's volume expected by now (session_fraction of the day elapsed).
+    """
     if len(df) < 210:
         return None
     df = indicators.add_all(df)
@@ -24,7 +32,7 @@ def evaluate(symbol: str, df: pd.DataFrame) -> dict | None:
     if not uptrend:
         return None
 
-    vol_ratio = t["Volume"] / t["vol20"] if t["vol20"] else 0
+    vol_ratio = t["Volume"] / (t["vol20"] * session_fraction) if t["vol20"] else 0
     setup = None
     reasons = []
     if t["Close"] > t["high20"] and vol_ratio >= 1.5 and 55 <= t["rsi"] <= 75:
@@ -100,15 +108,15 @@ def _growth_text(res: dict) -> str:
 
 
 def format_picks(picks: list[dict], universe: dict[str, str]) -> str:
-    today = dt.date.today().strftime("%d %b %Y")
+    now = dt.datetime.now(IST).strftime("%d %b %Y, %H:%M IST")
     if not picks:
-        return f"<b>Swing screener, {today}</b>\nNo setups passed the filters today.\n\n<i>{config.DISCLAIMER}</i>"
-    lines = [f"<b>Swing picks for next session ({today})</b>", ""]
+        return f"<b>Swing scan, {now}</b>\nNo new setups passed the filters.\n\n<i>{config.DISCLAIMER}</i>"
+    lines = [f"<b>Swing picks, {now}</b>", ""]
     for i, p in enumerate(picks, 1):
         name = html.escape(universe.get(p["symbol"], p["symbol"]))
         lines += [
             f"<b>{i}. {p['symbol']}</b> · {name} · {p['setup']}",
-            f"Buy above ₹{p['entry']:,.2f} (close ₹{p['close']:,.2f})",
+            f"Buy above ₹{p['entry']:,.2f} (now ₹{p['close']:,.2f})",
             f"Stop loss ₹{p['stop']:,.2f} (-{p['risk_pct']}%) · Target ₹{p['target']:,.2f} (+{p['risk_pct'] * config.TARGET_R_MULT:.1f}%)",
             "Why: " + html.escape("; ".join(p["reasons"])),
         ]
@@ -124,30 +132,53 @@ def format_picks(picks: list[dict], universe: dict[str, str]) -> str:
     return "\n".join(lines)
 
 
+def _session_fraction(now: dt.datetime) -> float:
+    start = dt.datetime.combine(now.date(), SESSION_OPEN, IST)
+    minutes = (now - start).total_seconds() / 60
+    return min(1.0, max(0.1, minutes / 375))
+
+
 def run(force: bool = False) -> None:
+    now = dt.datetime.now(IST)
     last = data.last_trading_date()
-    today = pd.Timestamp(dt.datetime.now(dt.timezone(dt.timedelta(hours=5, minutes=30))).date())
-    if not force and (last is None or last.date() != today.date()):
+    if not force and (last is None or last.date() != now.date()):
         print(f"No NSE session today (last bar {last}); skipping")
         return
+    in_session = SESSION_OPEN <= now.time() < SESSION_CLOSE and last is not None and last.date() == now.date()
+    eod = not force and not in_session
 
     universe = data.load_universe()
     print(f"Universe: {len(universe)} stocks")
+    positions = state.load()
+
+    if eod:
+        daily = data.download_daily(sorted({p["symbol"] for p in state.active(positions)}))
+        tracker.end_of_day(positions, daily)
+        state.save(positions)
+        telegram.send(tracker.summary(positions, daily))
+        return
+
     daily = data.download_daily(list(universe))
     print(f"Downloaded {len(daily)} stocks")
 
-    positions = state.load()
-    tracker.end_of_day(positions, daily)
-
-    held = {p["symbol"] for p in state.active(positions)}
-    slots = max(0, config.MAX_OPEN_POSITIONS - len(state.active(positions)))
-    cands = [c for s, df in daily.items() if s not in held and (c := evaluate(s, df))]
+    today = now.date().isoformat()
+    picked_today = [p for p in positions if p.get("created_at", "").startswith(today)]
+    skip = {p["symbol"] for p in state.active(positions)} | {p["symbol"] for p in picked_today}
+    slots = min(
+        config.MAX_OPEN_POSITIONS - len(state.active(positions)),
+        config.MAX_PICKS_PER_DAY - len(picked_today),
+    )
+    if slots <= 0:
+        print("No free slots; skipping scan")
+        return
+    frac = _session_fraction(now) if in_session else 1.0
+    cands = [c for s, df in daily.items() if s not in skip and (c := evaluate(s, df, frac))]
     cands.sort(key=lambda c: c["score"], reverse=True)
     print(f"{len(cands)} technical candidates")
 
     picks = []
     for c in cands[: config.MAX_PICKS_PER_DAY * 3]:
-        if len(picks) >= min(config.MAX_PICKS_PER_DAY, slots):
+        if len(picks) >= slots:
             break
         if (e := enrich(c, universe.get(c["symbol"], c["symbol"]))) is not None and e["score"] > 1.5:
             picks.append(e)
@@ -157,10 +188,11 @@ def run(force: bool = False) -> None:
     for p in picks:
         positions.append(
             {
-                "id": f"{p['symbol']}-{p['date']}",
+                "id": f"{p['symbol']}-{now:%Y-%m-%dT%H%M}",
                 "symbol": p["symbol"],
                 "setup": p["setup"],
                 "created": p["date"],
+                "created_at": now.isoformat(timespec="seconds"),
                 "entry": p["entry"],
                 "stop": p["stop"],
                 "initial_stop": p["stop"],
@@ -171,7 +203,6 @@ def run(force: bool = False) -> None:
             }
         )
     state.save(positions)
-    telegram.send(tracker.summary(positions, daily))
 
 
 if __name__ == "__main__":

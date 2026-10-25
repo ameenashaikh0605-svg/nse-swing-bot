@@ -20,9 +20,15 @@ def process_bars(p: dict, bars: pd.DataFrame) -> list[str]:
     alerts = []
     last = pd.Timestamp(p["last_checked"]) if p.get("last_checked") else None
     created = dt.date.fromisoformat(p["created"])
+    # Picks made during the session carry a timestamp; only bars after it count.
+    created_at = pd.Timestamp(p["created_at"]) if p.get("created_at") else None
     for ts, bar in bars.iterrows():
         ts = pd.Timestamp(ts)
-        if ts.date() <= created or (last is not None and ts < last):
+        if created_at is not None and ts.tzinfo is not None:
+            too_early = ts < created_at
+        else:
+            too_early = ts.date() <= created
+        if too_early or (last is not None and ts < last):
             continue
         if p["status"] == "pending" and bar["High"] >= p["entry"]:
             fill = max(p["entry"], float(bar["Open"]))
