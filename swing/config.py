@@ -1,0 +1,53 @@
+"""Tunable settings for the screener and tracker."""
+
+import os
+
+# Universe: NSE's published Nifty 500 list. Falls back to FALLBACK_UNIVERSE if NSE blocks the download.
+UNIVERSE_URL = "https://archives.nseindia.com/content/indices/ind_nifty500list.csv"
+
+# Liquidity: skip stocks whose 20-day average traded value is below this (in rupees).
+MIN_AVG_TRADED_VALUE = 10e7  # ₹10 crore
+MIN_PRICE = 50
+
+# How many picks to post each day, and how many can be open at once.
+MAX_PICKS_PER_DAY = 5
+MAX_OPEN_POSITIONS = 10
+
+# Risk model.
+ATR_STOP_MULT = 1.5        # stop = entry - 1.5 x ATR(14), or below the 10-day swing low if tighter
+MAX_STOP_PCT = 0.08        # skip setups whose stop would be more than 8% away
+TARGET_R_MULT = 2.0        # target = entry + 2R
+BREAKEVEN_AT_R = 1.0       # move stop to entry once price reaches +1R
+MAX_HOLD_DAYS = 10         # time exit after 10 trading days
+
+# Entry: a pick becomes "open" only when price trades at or above the entry trigger,
+# within ENTRY_VALID_DAYS sessions. It is cancelled if it gaps up more than MAX_CHASE_PCT above the trigger.
+ENTRY_VALID_DAYS = 2
+MAX_CHASE_PCT = 0.02
+
+# Don't hold through results: skip a stock whose earnings date is within this many days.
+EARNINGS_BLACKOUT_DAYS = 5
+
+STATE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "state", "positions.json")
+
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+
+DISCLAIMER = "Not financial advice. Educational screener output; do your own research and size positions carefully."
+
+# Used only if the NSE list cannot be downloaded (NSE sometimes blocks cloud IPs).
+FALLBACK_UNIVERSE = """
+RELIANCE TCS HDFCBANK ICICIBANK INFY BHARTIARTL SBIN ITC LT HINDUNILVR KOTAKBANK AXISBANK BAJFINANCE
+MARUTI SUNPHARMA HCLTECH TITAN ASIANPAINT ULTRACEMCO NTPC M&M TATAMOTORS POWERGRID ONGC WIPRO NESTLEIND
+ADANIENT ADANIPORTS JSWSTEEL TATASTEEL COALINDIA BAJAJFINSV TECHM GRASIM HINDALCO CIPLA DRREDDY
+DIVISLAB EICHERMOT HEROMOTOCO BAJAJ-AUTO BRITANNIA APOLLOHOSP SBILIFE HDFCLIFE INDUSINDBK BPCL
+TATACONSUM SHRIRAMFIN TRENT BEL HAL DLF GODREJCP PIDILITIND SIEMENS ABB HAVELLS DABUR VEDL IOC GAIL
+TVSMOTOR CHOLAFIN AMBUJACEM SHREECEM BANKBARODA PNB CANBK UNIONBANK IRCTC IRFC RECLTD PFC TATAPOWER
+ZYDUSLIFE LUPIN AUROPHARMA TORNTPHARM MANKIND ALKEM BIOCON MOTHERSON BOSCHLTD ASHOKLEY CUMMINSIND
+POLYCAB DIXON PERSISTENT LTIM COFORGE MPHASIS NAUKRI INDIGO JINDALSTEL SAIL NMDC HINDZINC ADANIGREEN
+ADANIPOWER TATAELXSI PAGEIND COLPAL MARICO BERGEPAINT UPL PIIND SRF DEEPAKNTR LICI ICICIGI ICICIPRULI
+HDFCAMC MUTHOOTFIN BAJAJHLDNG IDFCFIRSTB FEDERALBNK AUBANK BANDHANBNK LICHSGFIN MFSL MAXHEALTH
+FORTIS LALPATHLAB OBEROIRLTY GODREJPROP PRESTIGE PHOENIXLTD VOLTAS BLUESTARCO CROMPTON KEI APLAPOLLO
+ASTRAL SUPREMEIND BHARATFORG SONACOMS ESCORTS BALKRISIND MRF APOLLOTYRE EXIDEIND JUBLFOOD
+VBL UBL MCDOWELL-N PATANJALI TATACOMM IDEA INDUSTOWER ZOMATO PAYTM POLICYBZR NYKAA DELHIVERY
+""".split()

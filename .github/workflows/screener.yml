@@ -1,0 +1,43 @@
+name: Daily screener
+
+on:
+  schedule:
+    # 16:00 IST, Monday to Friday. Holidays are detected in code and skipped.
+    - cron: "30 10 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if NSE had no session today"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: state
+  cancel-in-progress: false
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run screener
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m swing.screener ${{ inputs.force && '--force' || '' }}
+      - name: Save state
+        run: |
+          git config user.name "swing-bot"
+          git config user.email "swing-bot@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet || git commit -m "Update picks $(date -u +%F)"
+          git push
