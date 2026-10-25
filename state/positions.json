@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "CYIENT-2026-10-23",
+    "symbol": "CYIENT",
+    "setup": "Breakout",
+    "created": "2026-10-23",
+    "entry": 1269.27,
+    "stop": 1188.83,
+    "initial_stop": 1188.83,
+    "target": 1430.15,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
+  }
+]
