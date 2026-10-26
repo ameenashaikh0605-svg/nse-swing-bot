@@ -10,7 +10,7 @@
     "target": 1430.15,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-10-26T11:25:00+05:30"
   },
   {
     "id": "GESHIP-2026-10-26T1125",
@@ -24,7 +24,7 @@
     "target": 1657.8,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-10-26T11:25:00+05:30"
   },
   {
     "id": "MRPL-2026-10-26T1125",
@@ -38,6 +38,6 @@
     "target": 209.23,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-10-26T11:25:00+05:30"
   }
 ]
