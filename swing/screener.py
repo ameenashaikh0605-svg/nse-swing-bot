@@ -172,6 +172,15 @@ def run(force: bool = False) -> None:
     in_session = SESSION_OPEN <= now.time() < SESSION_CLOSE and last is not None and last.date() == now.date()
     eod = not force and not in_session
 
+    # Each slot is scheduled several times because GitHub drops some scheduled runs; only the first one works.
+    slot = "eod" if eod else "am" if now.time() < dt.time(12, 15) else "pm"
+    today = now.date().isoformat()
+    if not force:
+        if state.slot_done(today, slot):
+            print(f"{slot} run already done today; skipping")
+            return
+        state.mark_slot(today, slot)
+
     universe = data.load_universe()
     print(f"Universe: {len(universe)} stocks")
     positions = state.load()
@@ -186,7 +195,6 @@ def run(force: bool = False) -> None:
     daily = data.download_daily(list(universe))
     print(f"Downloaded {len(daily)} stocks")
 
-    today = now.date().isoformat()
     picked_today = [p for p in positions if p.get("created_at", "").startswith(today)]
     skip = {p["symbol"] for p in state.active(positions)} | {p["symbol"] for p in picked_today}
     slots = min(

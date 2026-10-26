@@ -24,3 +24,27 @@ def save(positions: list[dict]) -> None:
 
 def active(positions: list[dict]) -> list[dict]:
     return [p for p in positions if p["status"] in ("pending", "open")]
+
+
+def _slots_file() -> str:
+    return os.path.join(os.path.dirname(config.STATE_FILE), "runs.json")
+
+
+def slot_done(day: str, slot: str) -> bool:
+    try:
+        with open(_slots_file()) as f:
+            return slot in json.load(f).get(day, [])
+    except FileNotFoundError:
+        return False
+
+
+def mark_slot(day: str, slot: str) -> None:
+    try:
+        with open(_slots_file()) as f:
+            runs = json.load(f)
+    except FileNotFoundError:
+        runs = {}
+    runs.setdefault(day, []).append(slot)
+    runs = dict(sorted(runs.items())[-10:])
+    with open(_slots_file(), "w") as f:
+        json.dump(runs, f, indent=2)

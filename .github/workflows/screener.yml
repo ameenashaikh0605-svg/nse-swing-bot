@@ -3,10 +3,12 @@ name: Screener
 on:
   schedule:
     # Scans at 11:00 and 13:00 IST, end-of-day summary at 16:00 IST, Monday to Friday.
-    # Holidays are detected in code and skipped. GitHub may start runs a few minutes late.
-    - cron: "30 5 * * 1-5"
-    - cron: "30 7 * * 1-5"
-    - cron: "30 10 * * 1-5"
+    # GitHub delays and sometimes drops scheduled runs, so each slot is scheduled three times
+    # and the code runs only the first one that arrives. Holidays are detected in code.
+    - cron: "28,43,58 5 * * 1-5"
+    - cron: "28,43,58 7 * * 1-5"
+    - cron: "33,48 10 * * 1-5"
+    - cron: "3 11 * * 1-5"
   workflow_dispatch:
     inputs:
       force:
@@ -24,6 +26,8 @@ concurrency:
 jobs:
   screen:
     runs-on: ubuntu-latest
+    env:
+      PYTHONWARNINGS: ignore
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -43,4 +47,5 @@ jobs:
           git config user.email "swing-bot@users.noreply.github.com"
           git add state/
           git diff --cached --quiet || git commit -m "Update picks $(date -u +%F)"
+          git pull --rebase origin main
           git push

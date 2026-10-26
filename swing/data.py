@@ -30,6 +30,19 @@ def yf_symbol(nse_symbol: str) -> str:
     return f"{nse_symbol}.NS"
 
 
+def _extract(raw: pd.DataFrame, ticker: str) -> pd.DataFrame:
+    """One ticker's OHLCV columns from a yf.download result, whichever column level holds the ticker.
+
+    Raises KeyError if the ticker is missing.
+    """
+    if not isinstance(raw.columns, pd.MultiIndex):
+        return raw
+    for level in range(raw.columns.nlevels):
+        if ticker in raw.columns.get_level_values(level):
+            return raw.xs(ticker, level=level, axis=1)
+    raise KeyError(ticker)
+
+
 def download_daily(symbols: list[str], period: str = "1y", batch: int = 100) -> dict[str, pd.DataFrame]:
     """Daily OHLCV per NSE symbol. Symbols with no data are left out."""
     out: dict[str, pd.DataFrame] = {}
@@ -46,9 +59,7 @@ def download_daily(symbols: list[str], period: str = "1y", batch: int = 100) -> 
         )
         for s in chunk:
             try:
-                df = raw[yf_symbol(s)] if len(chunk) > 1 else raw
-                if isinstance(df.columns, pd.MultiIndex):
-                    df = df.droplevel(1, axis=1) if df.columns.nlevels > 1 else df
+                df = _extract(raw, yf_symbol(s))
                 df = df.dropna(subset=["Close"])
                 if len(df) > 0:
                     out[s] = df
@@ -74,9 +85,7 @@ def download_intraday(symbols: list[str], period: str = "5d", interval: str = "5
     )
     for s in symbols:
         try:
-            df = raw[yf_symbol(s)] if len(symbols) > 1 else raw
-            if isinstance(df.columns, pd.MultiIndex):
-                df = df.droplevel(1, axis=1)
+            df = _extract(raw, yf_symbol(s))
             df = df.dropna(subset=["Close"])
             if df.index.tz is None:
                 df.index = df.index.tz_localize("UTC")

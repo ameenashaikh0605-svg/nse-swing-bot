@@ -134,3 +134,13 @@ def test_volume_line_in_message():
     c["volume"] = {"causes": [], "one_off": False, "unexplained": True, "evidence": None}
     msg = screener.format_picks([c], {"TEST": "Test"})
     assert "Why volume is" in msg and "no news or event found" in msg
+
+
+def test_extract_single_and_multi_ticker():
+    from swing.data import _extract
+    idx = pd.bdate_range("2026-01-01", periods=2)
+    cols = ["Open", "High", "Low", "Close", "Volume"]
+    one = pd.DataFrame(1.0, index=idx, columns=pd.MultiIndex.from_product([["A.NS"], cols]))
+    assert list(_extract(one, "A.NS").columns) == cols
+    flipped = pd.DataFrame(1.0, index=idx, columns=pd.MultiIndex.from_product([cols, ["A.NS", "B.NS"]]))
+    assert list(_extract(flipped, "B.NS").columns) == cols
