@@ -11,5 +11,33 @@
     "status": "pending",
     "breakeven": false,
     "last_checked": null
+  },
+  {
+    "id": "GESHIP-2026-10-26T1125",
+    "symbol": "GESHIP",
+    "setup": "Pullback",
+    "created": "2026-10-26",
+    "created_at": "2026-10-26T11:25:42+05:30",
+    "entry": 1526.52,
+    "stop": 1460.88,
+    "initial_stop": 1460.88,
+    "target": 1657.8,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
+  },
+  {
+    "id": "MRPL-2026-10-26T1125",
+    "symbol": "MRPL",
+    "setup": "Pullback",
+    "created": "2026-10-26",
+    "created_at": "2026-10-26T11:25:42+05:30",
+    "entry": 182.39,
+    "stop": 168.97,
+    "initial_stop": 168.97,
+    "target": 209.23,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
