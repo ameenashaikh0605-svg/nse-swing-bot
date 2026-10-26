@@ -10,7 +10,7 @@
     "target": 1430.15,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-10-26T13:50:00+05:30"
+    "last_checked": "2026-10-26T14:35:00+05:30"
   },
   {
     "id": "GESHIP-2026-10-26T1125",
@@ -24,7 +24,7 @@
     "target": 1657.8,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-26T13:50:00+05:30",
+    "last_checked": "2026-10-26T14:35:00+05:30",
     "fill": 1526.52,
     "opened": "2026-10-26T11:30:00+05:30"
   },
@@ -40,7 +40,7 @@
     "target": 209.23,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-26T13:50:00+05:30",
+    "last_checked": "2026-10-26T14:35:00+05:30",
     "fill": 182.39,
     "opened": "2026-10-26T13:05:00+05:30"
   },
@@ -54,9 +54,11 @@
     "stop": 3909.66,
     "initial_stop": 3909.66,
     "target": 4747.02,
-    "status": "pending",
+    "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-26T13:50:00+05:30"
+    "last_checked": "2026-10-26T14:35:00+05:30",
+    "fill": 4188.78,
+    "opened": "2026-10-26T14:05:00+05:30"
   },
   {
     "id": "ETERNAL-2026-10-26T1344",
@@ -70,7 +72,7 @@
     "target": 358.36,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-26T13:50:00+05:30",
+    "last_checked": "2026-10-26T14:35:00+05:30",
     "fill": 327.18,
     "opened": "2026-10-26T13:45:00+05:30"
   }
