@@ -67,13 +67,14 @@ def evaluate(symbol: str, df: pd.DataFrame, session_fraction: float = 1.0) -> di
         "stop": float(stop),
         "target": float(target),
         "risk_pct": round(float(risk / entry * 100), 2),
+        "vol_ratio": round(float(vol_ratio), 2),
         "score": round(float(score), 2),
         "reasons": reasons,
         "date": pd.Timestamp(df.index[-1]).date().isoformat(),
     }
 
 
-def enrich(cand: dict, company: str) -> dict | None:
+def enrich(cand: dict, company: str, nifty_change: float | None = None) -> dict | None:
     """Add news and results. Returns None if results are due inside the blackout window."""
     res = catalysts.results_check(cand["symbol"])
     if res["next_earnings"]:
@@ -95,7 +96,29 @@ def enrich(cand: dict, company: str) -> dict | None:
         cand["reasons"].append("Positive news flow")
     elif nscore < 0:
         cand["reasons"].append("Negative headlines, be careful")
+    if cand["vol_ratio"] >= 1.3:
+        vr = catalysts.volume_reason(cand["symbol"], headlines, res, nifty_change)
+        cand["volume"] = vr
+        if vr["one_off"]:
+            cand["score"] = round(cand["score"] - 1, 2)
+        elif vr["unexplained"]:
+            cand["score"] = round(cand["score"] - 0.5, 2)
     return cand
+
+
+def _volume_line(p: dict) -> str | None:
+    vr = p.get("volume")
+    if not vr:
+        return None
+    head = f"Why volume is {p['vol_ratio']:.1f}x normal: "
+    if vr["unexplained"]:
+        return head + "no news or event found. It could be speculative or operator buying, so be extra careful."
+    text = head + ", ".join(vr["causes"])
+    if vr["evidence"]:
+        text += f' ("{vr["evidence"][:120]}")'
+    if vr["one_off"]:
+        text += ". ⚠️ This kind of volume is often a one-off and may not mean fresh buying."
+    return text
 
 
 def _growth_text(res: dict) -> str:
@@ -120,7 +143,9 @@ def format_picks(picks: list[dict], universe: dict[str, str]) -> str:
             f"Stop loss ₹{p['stop']:,.2f} (-{p['risk_pct']}%) · Target ₹{p['target']:,.2f} (+{p['risk_pct'] * config.TARGET_R_MULT:.1f}%)",
             "Why: " + html.escape("; ".join(p["reasons"])),
         ]
-        if p.get("headlines"):
+        if (vl := _volume_line(p)):
+            lines.append(html.escape(vl))
+        if p.get("headlines") and not (p.get("volume") or {}).get("evidence"):
             lines.append("News: " + html.escape(p["headlines"][0][:140]))
         lines.append("")
     lines += [
@@ -172,6 +197,7 @@ def run(force: bool = False) -> None:
         print("No free slots; skipping scan")
         return
     frac = _session_fraction(now) if in_session else 1.0
+    nifty_change = data.index_change()
     cands = [c for s, df in daily.items() if s not in skip and (c := evaluate(s, df, frac))]
     cands.sort(key=lambda c: c["score"], reverse=True)
     print(f"{len(cands)} technical candidates")
@@ -180,7 +206,7 @@ def run(force: bool = False) -> None:
     for c in cands[: config.MAX_PICKS_PER_DAY * 3]:
         if len(picks) >= slots:
             break
-        if (e := enrich(c, universe.get(c["symbol"], c["symbol"]))) is not None and e["score"] > 1.5:
+        if (e := enrich(c, universe.get(c["symbol"], c["symbol"]), nifty_change)) is not None and e["score"] > 1.5:
             picks.append(e)
     picks.sort(key=lambda c: c["score"], reverse=True)
 

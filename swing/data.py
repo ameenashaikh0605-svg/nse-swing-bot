@@ -94,3 +94,14 @@ def last_trading_date() -> pd.Timestamp | None:
     if df.empty:
         return None
     return pd.Timestamp(df.index[-1]).normalize()
+
+
+def index_change() -> float | None:
+    """Nifty 50's change today versus the previous close, as a fraction."""
+    try:
+        df = yf.download("^NSEI", period="5d", interval="1d", progress=False, auto_adjust=True)
+        close = df["Close"].squeeze().dropna()
+        return float(close.iloc[-1] / close.iloc[-2] - 1) if len(close) >= 2 else None
+    except Exception as e:
+        print(f"Nifty fetch failed: {e}")
+        return None

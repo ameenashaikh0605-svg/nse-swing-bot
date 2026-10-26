@@ -92,3 +92,54 @@ def results_score(info: dict) -> int:
     if prof is not None:
         score += 1 if prof > 0.15 else -1 if prof < -0.10 else 0
     return score
+
+
+# Common causes of a volume spike, matched against recent headlines. "one_off" causes are trades or
+# events that don't signal new buying interest, so the pick is marked down.
+VOLUME_CAUSES = [
+    ("Block or bulk deal / stake sale", True, ["block deal", "bulk deal", "stake sale", "offer for sale", "ofs", "promoter sells", "sells stake", "offloads", "large trade"]),
+    ("Quarterly results", False, ["results", "q1", "q2", "q3", "q4", "quarterly", "net profit", "earnings", "revenue"]),
+    ("Order win or contract", False, ["order", "contract", "bags", "secures", "wins deal", "tender"]),
+    ("Broker rating or target change", False, ["upgrade", "downgrade", "target price", "buy rating", "sell rating", "initiates coverage", "brokerage"]),
+    ("Dividend, bonus, split or buyback", True, ["dividend", "bonus", "split", "buyback", "record date", "ex-date", "rights issue"]),
+    ("Merger, acquisition or demerger", False, ["acquire", "acquisition", "merger", "demerger", "takeover", "amalgamation"]),
+    ("Index inclusion or rebalancing", True, ["index inclusion", "msci", "ftse", "sensex inclusion", "nifty inclusion", "rejig", "rebalancing", "rebalance"]),
+    ("Regulatory or legal news", False, ["sebi", "usfda", "probe", "raid", "penalty", "approval", "licence", "license", "ban"]),
+    ("Fundraise or QIP", True, ["qip", "fundraise", "raises", "preferential issue", "ncd"]),
+]
+
+
+def volume_reason(symbol: str, headlines: list[str], results: dict, nifty_change: float | None) -> dict:
+    """Best guess at why a stock's volume jumped, from headlines, corporate actions and the market.
+
+    Returns {"causes": [str], "one_off": bool, "unexplained": bool, "evidence": str | None}.
+    """
+    causes, evidence, one_off = [], None, False
+    for title in headlines:
+        low = title.lower()
+        for label, is_one_off, words in VOLUME_CAUSES:
+            if label not in causes and any(re.search(rf"\b{re.escape(w)}\b", low) for w in words):
+                causes.append(label)
+                one_off |= is_one_off
+                evidence = evidence or title
+    t = yf.Ticker(yf_symbol(symbol))
+    try:
+        actions = t.actions
+        if actions is not None and len(actions):
+            recent = actions[actions.index >= pd.Timestamp.now(tz=actions.index.tz) - pd.Timedelta(days=3)]
+            if len(recent) and "Dividend, bonus, split or buyback" not in causes:
+                causes.append("Dividend, bonus, split or buyback")
+                one_off = True
+    except Exception as e:
+        print(f"Actions fetch failed for {symbol}: {e}")
+    try:
+        ed = t.get_earnings_dates(limit=4)
+        if ed is not None and len(ed):
+            now = pd.Timestamp.now(tz=ed.index.tz)
+            if any(now - pd.Timedelta(days=3) <= d <= now for d in ed.index) and "Quarterly results" not in causes:
+                causes.append("Quarterly results")
+    except Exception as e:
+        print(f"Earnings dates fetch failed for {symbol}: {e}")
+    if nifty_change is not None and abs(nifty_change) >= 0.015:
+        causes.append(f"Whole market moving (Nifty {nifty_change:+.1%})")
+    return {"causes": causes, "one_off": one_off, "unexplained": not causes, "evidence": evidence}

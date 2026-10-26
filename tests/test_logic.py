@@ -109,3 +109,28 @@ def test_intraday_pick_ignores_bars_before_it():
     b2 = bars([(100.5, 101.2, 100.3, 101)], start="2026-01-06 11:10")
     tracker.process_bars(p, b2)
     assert p["status"] == "open"
+
+
+class _NoTicker:
+    actions = None
+
+    def get_earnings_dates(self, limit=4):
+        return None
+
+
+def test_volume_reason(monkeypatch):
+    from swing import catalysts
+    monkeypatch.setattr(catalysts.yf, "Ticker", lambda s: _NoTicker())
+    vr = catalysts.volume_reason("X", ["Promoter offloads 5% via block deal", "Bank of X sees ban lifted"], {}, 0.002)
+    assert vr["causes"][0].startswith("Block") and vr["one_off"] and not vr["unexplained"]
+    vr = catalysts.volume_reason("X", ["X Bank shares in focus"], {}, 0.02)
+    assert vr["causes"] == ["Whole market moving (Nifty +2.0%)"]
+    vr = catalysts.volume_reason("X", [], {}, None)
+    assert vr["unexplained"]
+
+
+def test_volume_line_in_message():
+    c = screener.evaluate("TEST", make_daily())
+    c["volume"] = {"causes": [], "one_off": False, "unexplained": True, "evidence": None}
+    msg = screener.format_picks([c], {"TEST": "Test"})
+    assert "Why volume is" in msg and "no news or event found" in msg

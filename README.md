@@ -15,7 +15,8 @@ A daily screener for Nifty 500 stocks that posts short-term swing trade ideas to
    - **Pullback**: a bounce off the rising 20 EMA, RSI 40 to 60, MACD histogram turning up.
 4. Sets entry just above the day's high so far, stop at 1.5x ATR below entry (or below the 10-day swing low for pullbacks), and target at 2R. Setups with a stop more than 8% away are dropped.
 5. For the best candidates, checks quarterly results (revenue and profit growth) and recent Google News headlines, and skips any stock with results due in the next 5 days.
-6. Posts the best picks to Telegram (at most 5 a day across both scans) and records them in `state/positions.json`.
+6. When volume is high, looks for the reason: results, block or bulk deals, order wins, broker calls, dividends or splits, mergers, index changes, regulatory news, fundraises, or a big move in the whole market. One-off causes (like a block deal) and unexplained spikes lower the pick's score, and the reason is shown in the message.
+7. Posts the best picks to Telegram (at most 5 a day across both scans) and records them in `state/positions.json`.
 
 A third run at 16:00 IST posts a summary of open positions and closed-trade results.
 
