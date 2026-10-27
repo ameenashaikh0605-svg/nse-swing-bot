@@ -10,7 +10,7 @@
     "target": 1430.15,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30"
+    "last_checked": "2026-10-27T12:45:00+05:30"
   },
   {
     "id": "GESHIP-2026-10-26T1125",
@@ -24,7 +24,7 @@
     "target": 1657.8,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 1526.52,
     "opened": "2026-10-26T11:30:00+05:30"
   },
@@ -40,7 +40,7 @@
     "target": 209.23,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 182.39,
     "opened": "2026-10-26T13:05:00+05:30"
   },
@@ -56,7 +56,7 @@
     "target": 4747.02,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:50:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 4188.78,
     "opened": "2026-10-26T14:05:00+05:30"
   },
@@ -72,7 +72,7 @@
     "target": 358.36,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 327.18,
     "opened": "2026-10-26T13:45:00+05:30"
   },
@@ -88,7 +88,7 @@
     "target": 1940.32,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30"
+    "last_checked": "2026-10-27T12:45:00+05:30"
   },
   {
     "id": "CUPID-2026-10-27T1105",
@@ -102,7 +102,7 @@
     "target": 379.53,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 328.33,
     "opened": "2026-10-27T11:25:00+05:30"
   },
@@ -116,9 +116,11 @@
     "stop": 816.51,
     "initial_stop": 816.51,
     "target": 946.41,
-    "status": "pending",
+    "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30"
+    "last_checked": "2026-10-27T12:45:00+05:30",
+    "fill": 859.81,
+    "opened": "2026-10-27T12:00:00+05:30"
   },
   {
     "id": "APLAPOLLO-2026-10-27T1105",
@@ -132,7 +134,7 @@
     "target": 2360.89,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 2172.17,
     "opened": "2026-10-27T11:25:00+05:30"
   },
@@ -148,7 +150,7 @@
     "target": 10159.06,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-10-27T11:55:00+05:30",
+    "last_checked": "2026-10-27T12:45:00+05:30",
     "fill": 9419.0,
     "opened": "2026-10-27T11:10:00+05:30"
   }
