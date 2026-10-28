@@ -155,5 +155,19 @@
     "last_checked": "2026-10-28T10:40:00+05:30",
     "fill": 9419.0,
     "opened": "2026-10-27T11:10:00+05:30"
+  },
+  {
+    "id": "CRAFTSMAN-2026-10-28T1105",
+    "symbol": "CRAFTSMAN",
+    "setup": "Pullback",
+    "created": "2026-10-28",
+    "created_at": "2026-10-28T11:05:07+05:30",
+    "entry": 11211.2,
+    "stop": 10641.72,
+    "initial_stop": 10641.72,
+    "target": 12350.16,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
