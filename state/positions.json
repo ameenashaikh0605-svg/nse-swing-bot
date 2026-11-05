@@ -234,5 +234,19 @@
     "status": "pending",
     "breakeven": false,
     "last_checked": "2026-11-05T12:05:00+05:30"
+  },
+  {
+    "id": "LENSKART-2026-11-05T1304",
+    "symbol": "LENSKART",
+    "setup": "Breakout",
+    "created": "2026-11-05",
+    "created_at": "2026-11-05T13:04:52+05:30",
+    "entry": 763.51,
+    "stop": 724.41,
+    "initial_stop": 724.41,
+    "target": 841.71,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
