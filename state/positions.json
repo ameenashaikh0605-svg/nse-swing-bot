@@ -253,5 +253,19 @@
     "status": "pending",
     "breakeven": false,
     "last_checked": "2026-11-06T10:10:00+05:30"
+  },
+  {
+    "id": "MCX-2026-11-06T1105",
+    "symbol": "MCX",
+    "setup": "Pullback",
+    "created": "2026-11-06",
+    "created_at": "2026-11-06T11:05:27+05:30",
+    "entry": 3449.45,
+    "stop": 3260.91,
+    "initial_stop": 3260.91,
+    "target": 3826.53,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
