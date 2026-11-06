@@ -47,7 +47,7 @@
     "target": 209.23,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 182.39,
     "opened": "2026-10-26T13:05:00+05:30"
   },
@@ -63,7 +63,7 @@
     "target": 4747.02,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 4188.78,
     "opened": "2026-10-26T14:05:00+05:30"
   },
@@ -116,7 +116,7 @@
     "target": 379.53,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 328.33,
     "opened": "2026-10-27T11:25:00+05:30"
   },
@@ -132,7 +132,7 @@
     "target": 946.41,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 859.81,
     "opened": "2026-10-27T12:00:00+05:30"
   },
@@ -148,7 +148,7 @@
     "target": 2360.89,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 2172.17,
     "opened": "2026-10-27T11:25:00+05:30"
   },
@@ -206,7 +206,7 @@
     "target": 1671.76,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 1516.52,
     "opened": "2026-10-30T09:35:00+05:30"
   },
@@ -222,7 +222,7 @@
     "target": 2264.95,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 2051.55,
     "opened": "2026-10-30T11:20:00+05:30"
   },
@@ -238,7 +238,7 @@
     "target": 306.01,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30"
+    "last_checked": "2026-11-06T14:10:00+05:30"
   },
   {
     "id": "LENSKART-2026-11-05T1304",
@@ -252,7 +252,7 @@
     "target": 841.71,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30"
+    "last_checked": "2026-11-06T14:10:00+05:30"
   },
   {
     "id": "MCX-2026-11-06T1105",
@@ -266,7 +266,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-06T13:20:00+05:30",
+    "last_checked": "2026-11-06T14:10:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   }
