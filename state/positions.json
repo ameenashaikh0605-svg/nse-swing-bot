@@ -45,11 +45,16 @@
     "stop": 168.97,
     "initial_stop": 168.97,
     "target": 209.23,
-    "status": "open",
+    "status": "closed",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 182.39,
-    "opened": "2026-10-26T13:05:00+05:30"
+    "opened": "2026-10-26T13:05:00+05:30",
+    "closed": "2026-11-11T00:00:00",
+    "exit": 178.99,
+    "exit_reason": "time exit",
+    "pnl_pct": -1.86,
+    "r_multiple": -0.25
   },
   {
     "id": "SANSERA-2026-10-26T1344",
@@ -61,11 +66,16 @@
     "stop": 4188.78,
     "initial_stop": 3909.66,
     "target": 4747.02,
-    "status": "open",
+    "status": "closed",
     "breakeven": true,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 4188.78,
-    "opened": "2026-10-26T14:05:00+05:30"
+    "opened": "2026-10-26T14:05:00+05:30",
+    "closed": "2026-11-11T00:00:00",
+    "exit": 4655.1,
+    "exit_reason": "time exit",
+    "pnl_pct": 11.13,
+    "r_multiple": 1.67
   },
   {
     "id": "ETERNAL-2026-10-26T1344",
@@ -114,11 +124,16 @@
     "stop": 302.73,
     "initial_stop": 302.73,
     "target": 379.53,
-    "status": "open",
+    "status": "closed",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 328.33,
-    "opened": "2026-10-27T11:25:00+05:30"
+    "opened": "2026-10-27T11:25:00+05:30",
+    "closed": "2026-11-11T00:00:00",
+    "exit": 354.0,
+    "exit_reason": "time exit",
+    "pnl_pct": 7.82,
+    "r_multiple": 1.0
   },
   {
     "id": "SONACOMS-2026-10-27T1105",
@@ -130,11 +145,16 @@
     "stop": 859.81,
     "initial_stop": 816.51,
     "target": 946.41,
-    "status": "open",
+    "status": "closed",
     "breakeven": true,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 859.81,
-    "opened": "2026-10-27T12:00:00+05:30"
+    "opened": "2026-10-27T12:00:00+05:30",
+    "closed": "2026-11-11T00:00:00",
+    "exit": 925.0,
+    "exit_reason": "time exit",
+    "pnl_pct": 7.58,
+    "r_multiple": 1.51
   },
   {
     "id": "APLAPOLLO-2026-10-27T1105",
@@ -146,11 +166,16 @@
     "stop": 2077.81,
     "initial_stop": 2077.81,
     "target": 2360.89,
-    "status": "open",
+    "status": "closed",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 2172.17,
-    "opened": "2026-10-27T11:25:00+05:30"
+    "opened": "2026-10-27T11:25:00+05:30",
+    "closed": "2026-11-11T00:00:00",
+    "exit": 2198.0,
+    "exit_reason": "time exit",
+    "pnl_pct": 1.19,
+    "r_multiple": 0.27
   },
   {
     "id": "DIVISLAB-2026-10-27T1105",
@@ -206,7 +231,7 @@
     "target": 1671.76,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 1516.52,
     "opened": "2026-10-30T09:35:00+05:30"
   },
@@ -222,7 +247,7 @@
     "target": 2264.95,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 2051.55,
     "opened": "2026-10-30T11:20:00+05:30"
   },
@@ -252,9 +277,11 @@
     "stop": 724.41,
     "initial_stop": 724.41,
     "target": 841.71,
-    "status": "pending",
+    "status": "cancelled",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30"
+    "last_checked": "2026-11-11T15:31:00+05:30",
+    "closed": "2026-11-11",
+    "exit_reason": "entry not triggered"
   },
   {
     "id": "MCX-2026-11-06T1105",
@@ -268,7 +295,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30",
+    "last_checked": "2026-11-11T15:31:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   },
@@ -284,6 +311,6 @@
     "target": 1326.82,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-11T13:05:00+05:30"
+    "last_checked": "2026-11-11T15:31:00+05:30"
   }
 ]
