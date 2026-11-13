@@ -247,7 +247,7 @@
     "target": 2264.95,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30",
+    "last_checked": "2026-11-13T11:05:00+05:30",
     "fill": 2051.55,
     "opened": "2026-10-30T11:20:00+05:30"
   },
@@ -295,7 +295,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-12T15:31:00+05:30",
+    "last_checked": "2026-11-13T11:05:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   },
@@ -311,7 +311,7 @@
     "target": 1326.82,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30",
+    "last_checked": "2026-11-13T11:05:00+05:30",
     "fill": 1192.54,
     "opened": "2026-11-12T09:20:00+05:30"
   },
@@ -325,9 +325,16 @@
     "stop": 365.69,
     "initial_stop": 365.69,
     "target": 436.79,
-    "status": "pending",
+    "status": "closed",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30"
+    "last_checked": "2026-11-13T11:05:00+05:30",
+    "fill": 390.0,
+    "opened": "2026-11-13T09:15:00+05:30",
+    "closed": "2026-11-13T09:30:00+05:30",
+    "exit": 365.69,
+    "exit_reason": "stop loss",
+    "pnl_pct": -6.23,
+    "r_multiple": -1.0
   },
   {
     "id": "MEESHO-2026-11-12T1105",
@@ -341,7 +348,7 @@
     "target": 288.3,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30",
+    "last_checked": "2026-11-13T11:05:00+05:30",
     "fill": 258.76,
     "opened": "2026-11-12T11:15:00+05:30"
   },
@@ -357,7 +364,7 @@
     "target": 5433.4,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30"
+    "last_checked": "2026-11-13T11:05:00+05:30"
   },
   {
     "id": "NAVINFLUOR-2026-11-12T1105",
@@ -369,9 +376,11 @@
     "stop": 9430.4,
     "initial_stop": 9430.4,
     "target": 10769.81,
-    "status": "pending",
+    "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30"
+    "last_checked": "2026-11-13T11:05:00+05:30",
+    "fill": 9949.5,
+    "opened": "2026-11-13T09:15:00+05:30"
   },
   {
     "id": "DLF-2026-11-12T1105",
@@ -385,7 +394,7 @@
     "target": 823.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-12T15:31:00+05:30",
+    "last_checked": "2026-11-13T11:05:00+05:30",
     "fill": 767.57,
     "opened": "2026-11-12T11:25:00+05:30"
   },
@@ -401,6 +410,6 @@
     "target": 388.02,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-11-13T11:05:00+05:30"
   }
 ]
