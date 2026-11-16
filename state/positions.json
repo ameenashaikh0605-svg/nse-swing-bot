@@ -250,11 +250,16 @@
     "stop": 1944.85,
     "initial_stop": 1944.85,
     "target": 2264.95,
-    "status": "open",
+    "status": "closed",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 2051.55,
-    "opened": "2026-10-30T11:20:00+05:30"
+    "opened": "2026-10-30T11:20:00+05:30",
+    "closed": "2026-11-16T00:00:00",
+    "exit": 2010.0,
+    "exit_reason": "time exit",
+    "pnl_pct": -2.03,
+    "r_multiple": -0.39
   },
   {
     "id": "WELSPUNLIV-2026-11-04T1105",
@@ -300,7 +305,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   },
@@ -316,7 +321,7 @@
     "target": 1326.82,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 1192.54,
     "opened": "2026-11-12T09:20:00+05:30"
   },
@@ -353,7 +358,7 @@
     "target": 288.3,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 258.76,
     "opened": "2026-11-12T11:15:00+05:30"
   },
@@ -367,9 +372,11 @@
     "stop": 4556.56,
     "initial_stop": 4556.56,
     "target": 5433.4,
-    "status": "pending",
+    "status": "cancelled",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30"
+    "last_checked": "2026-11-16T15:31:00+05:30",
+    "closed": "2026-11-16",
+    "exit_reason": "entry not triggered"
   },
   {
     "id": "NAVINFLUOR-2026-11-12T1105",
@@ -383,7 +390,7 @@
     "target": 10769.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 9949.5,
     "opened": "2026-11-13T09:15:00+05:30"
   },
@@ -399,7 +406,7 @@
     "target": 823.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 767.57,
     "opened": "2026-11-12T11:25:00+05:30"
   },
@@ -415,7 +422,7 @@
     "target": 388.02,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30",
+    "last_checked": "2026-11-16T15:31:00+05:30",
     "fill": 353.5,
     "opened": "2026-11-16T11:55:00+05:30"
   },
@@ -431,7 +438,7 @@
     "target": 572.23,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30"
+    "last_checked": "2026-11-16T15:31:00+05:30"
   },
   {
     "id": "APLAPOLLO-2026-11-16T1105",
@@ -445,6 +452,6 @@
     "target": 2487.29,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-16T13:30:00+05:30"
+    "last_checked": "2026-11-16T15:31:00+05:30"
   }
 ]
