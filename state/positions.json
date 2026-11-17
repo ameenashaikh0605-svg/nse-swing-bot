@@ -305,7 +305,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-16T15:31:00+05:30",
+    "last_checked": "2026-11-17T11:05:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   },
@@ -316,12 +316,12 @@
     "created": "2026-11-11",
     "created_at": "2026-11-11T11:05:22+05:30",
     "entry": 1192.54,
-    "stop": 1125.4,
+    "stop": 1192.54,
     "initial_stop": 1125.4,
     "target": 1326.82,
     "status": "open",
-    "breakeven": false,
-    "last_checked": "2026-11-16T15:31:00+05:30",
+    "breakeven": true,
+    "last_checked": "2026-11-17T11:05:00+05:30",
     "fill": 1192.54,
     "opened": "2026-11-12T09:20:00+05:30"
   },
@@ -390,7 +390,7 @@
     "target": 10769.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T15:31:00+05:30",
+    "last_checked": "2026-11-17T11:05:00+05:30",
     "fill": 9949.5,
     "opened": "2026-11-13T09:15:00+05:30"
   },
@@ -406,7 +406,7 @@
     "target": 823.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T15:31:00+05:30",
+    "last_checked": "2026-11-17T11:05:00+05:30",
     "fill": 767.57,
     "opened": "2026-11-12T11:25:00+05:30"
   },
@@ -417,12 +417,12 @@
     "created": "2026-11-13",
     "created_at": "2026-11-13T11:05:49+05:30",
     "entry": 353.5,
-    "stop": 336.24,
+    "stop": 353.5,
     "initial_stop": 336.24,
     "target": 388.02,
     "status": "open",
-    "breakeven": false,
-    "last_checked": "2026-11-16T15:31:00+05:30",
+    "breakeven": true,
+    "last_checked": "2026-11-17T11:05:00+05:30",
     "fill": 353.5,
     "opened": "2026-11-16T11:55:00+05:30"
   },
@@ -436,9 +436,11 @@
     "stop": 490.09,
     "initial_stop": 490.09,
     "target": 572.23,
-    "status": "pending",
+    "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-16T15:31:00+05:30"
+    "last_checked": "2026-11-17T11:05:00+05:30",
+    "fill": 517.47,
+    "opened": "2026-11-17T09:25:00+05:30"
   },
   {
     "id": "APLAPOLLO-2026-11-16T1105",
@@ -452,7 +454,7 @@
     "target": 2487.29,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-16T15:31:00+05:30"
+    "last_checked": "2026-11-17T11:05:00+05:30"
   },
   {
     "id": "ABDL-2026-11-17T1105",
@@ -466,7 +468,7 @@
     "target": 951.93,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-11-17T11:05:00+05:30"
   },
   {
     "id": "GROWW-2026-11-17T1105",
@@ -480,6 +482,6 @@
     "target": 256.79,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-11-17T11:05:00+05:30"
   }
 ]
