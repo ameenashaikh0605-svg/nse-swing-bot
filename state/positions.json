@@ -453,5 +453,33 @@
     "status": "pending",
     "breakeven": false,
     "last_checked": "2026-11-16T15:31:00+05:30"
+  },
+  {
+    "id": "ABDL-2026-11-17T1105",
+    "symbol": "ABDL",
+    "setup": "Breakout",
+    "created": "2026-11-17",
+    "created_at": "2026-11-17T11:05:02+05:30",
+    "entry": 855.55,
+    "stop": 807.36,
+    "initial_stop": 807.36,
+    "target": 951.93,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
+  },
+  {
+    "id": "GROWW-2026-11-17T1105",
+    "symbol": "GROWW",
+    "setup": "Breakout",
+    "created": "2026-11-17",
+    "created_at": "2026-11-17T11:05:02+05:30",
+    "entry": 233.63,
+    "stop": 222.05,
+    "initial_stop": 222.05,
+    "target": 256.79,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
