@@ -488,5 +488,19 @@
     "status": "pending",
     "breakeven": false,
     "last_checked": "2026-11-17T15:31:00+05:30"
+  },
+  {
+    "id": "SUNTV-2026-11-18T1105",
+    "symbol": "SUNTV",
+    "setup": "Breakout",
+    "created": "2026-11-18",
+    "created_at": "2026-11-18T11:05:23+05:30",
+    "entry": 684.48,
+    "stop": 641.9,
+    "initial_stop": 641.9,
+    "target": 769.64,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
