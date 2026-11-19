@@ -305,7 +305,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-18T15:31:00+05:30",
+    "last_checked": "2026-11-19T11:05:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   },
@@ -319,11 +319,16 @@
     "stop": 1192.54,
     "initial_stop": 1125.4,
     "target": 1326.82,
-    "status": "open",
+    "status": "closed",
     "breakeven": true,
-    "last_checked": "2026-11-18T15:31:00+05:30",
+    "last_checked": "2026-11-19T11:05:00+05:30",
     "fill": 1192.54,
-    "opened": "2026-11-12T09:20:00+05:30"
+    "opened": "2026-11-12T09:20:00+05:30",
+    "closed": "2026-11-19T09:30:00+05:30",
+    "exit": 1192.54,
+    "exit_reason": "breakeven stop",
+    "pnl_pct": 0.0,
+    "r_multiple": 0.0
   },
   {
     "id": "CUPID-2026-11-12T1105",
@@ -358,7 +363,7 @@
     "target": 288.3,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30",
+    "last_checked": "2026-11-19T11:05:00+05:30",
     "fill": 258.76,
     "opened": "2026-11-12T11:15:00+05:30"
   },
@@ -390,7 +395,7 @@
     "target": 10769.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30",
+    "last_checked": "2026-11-19T11:05:00+05:30",
     "fill": 9949.5,
     "opened": "2026-11-13T09:15:00+05:30"
   },
@@ -406,7 +411,7 @@
     "target": 823.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30",
+    "last_checked": "2026-11-19T11:00:00+05:30",
     "fill": 767.57,
     "opened": "2026-11-12T11:25:00+05:30"
   },
@@ -443,7 +448,7 @@
     "target": 572.23,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30",
+    "last_checked": "2026-11-19T11:00:00+05:30",
     "fill": 517.47,
     "opened": "2026-11-17T09:25:00+05:30"
   },
@@ -475,7 +480,7 @@
     "target": 951.93,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30"
+    "last_checked": "2026-11-19T11:00:00+05:30"
   },
   {
     "id": "GROWW-2026-11-17T1105",
@@ -489,7 +494,7 @@
     "target": 256.79,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30"
+    "last_checked": "2026-11-19T11:05:00+05:30"
   },
   {
     "id": "SUNTV-2026-11-18T1105",
@@ -501,8 +506,10 @@
     "stop": 641.9,
     "initial_stop": 641.9,
     "target": 769.64,
-    "status": "pending",
+    "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-18T15:31:00+05:30"
+    "last_checked": "2026-11-19T11:00:00+05:30",
+    "fill": 690.9,
+    "opened": "2026-11-19T09:15:00+05:30"
   }
 ]
