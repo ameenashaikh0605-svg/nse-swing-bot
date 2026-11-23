@@ -305,7 +305,7 @@
     "target": 3826.53,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-20T15:31:00+05:30",
+    "last_checked": "2026-11-23T11:05:00+05:30",
     "fill": 3449.45,
     "opened": "2026-11-06T12:05:00+05:30"
   },
@@ -363,7 +363,7 @@
     "target": 288.3,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30",
+    "last_checked": "2026-11-23T11:05:00+05:30",
     "fill": 258.76,
     "opened": "2026-11-12T11:15:00+05:30"
   },
@@ -395,7 +395,7 @@
     "target": 10769.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30",
+    "last_checked": "2026-11-23T11:05:00+05:30",
     "fill": 9949.5,
     "opened": "2026-11-13T09:15:00+05:30"
   },
@@ -411,7 +411,7 @@
     "target": 823.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30",
+    "last_checked": "2026-11-23T11:05:00+05:30",
     "fill": 767.57,
     "opened": "2026-11-12T11:25:00+05:30"
   },
@@ -448,7 +448,7 @@
     "target": 572.23,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30",
+    "last_checked": "2026-11-23T11:05:00+05:30",
     "fill": 517.47,
     "opened": "2026-11-17T09:25:00+05:30"
   },
@@ -512,7 +512,7 @@
     "target": 769.64,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30",
+    "last_checked": "2026-11-23T11:05:00+05:30",
     "fill": 690.9,
     "opened": "2026-11-19T09:15:00+05:30"
   },
@@ -528,7 +528,7 @@
     "target": 505.75,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30"
+    "last_checked": "2026-11-23T11:05:00+05:30"
   },
   {
     "id": "URBANCO-2026-11-19T1105",
@@ -542,7 +542,7 @@
     "target": 199.86,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30"
+    "last_checked": "2026-11-23T11:05:00+05:30"
   },
   {
     "id": "COFORGE-2026-11-20T1104",
@@ -556,7 +556,7 @@
     "target": 2396.08,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30"
+    "last_checked": "2026-11-23T11:05:00+05:30"
   },
   {
     "id": "NUVOCO-2026-11-20T1104",
@@ -570,6 +570,6 @@
     "target": 410.49,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-20T15:31:00+05:30"
+    "last_checked": "2026-11-23T11:05:00+05:30"
   }
 ]
