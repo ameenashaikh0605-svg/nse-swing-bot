@@ -580,5 +580,47 @@
     "status": "pending",
     "breakeven": false,
     "last_checked": "2026-11-23T15:31:00+05:30"
+  },
+  {
+    "id": "ICICIBANK-2026-11-25T1105",
+    "symbol": "ICICIBANK",
+    "setup": "Breakout",
+    "created": "2026-11-25",
+    "created_at": "2026-11-25T11:05:15+05:30",
+    "entry": 1651.65,
+    "stop": 1598.67,
+    "initial_stop": 1598.67,
+    "target": 1757.61,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
+  },
+  {
+    "id": "JSWINFRA-2026-11-25T1105",
+    "symbol": "JSWINFRA",
+    "setup": "Breakout",
+    "created": "2026-11-25",
+    "created_at": "2026-11-25T11:05:15+05:30",
+    "entry": 361.76,
+    "stop": 345.1,
+    "initial_stop": 345.1,
+    "target": 395.08,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
+  },
+  {
+    "id": "COHANCE-2026-11-25T1105",
+    "symbol": "COHANCE",
+    "setup": "Breakout",
+    "created": "2026-11-25",
+    "created_at": "2026-11-25T11:05:15+05:30",
+    "entry": 520.52,
+    "stop": 491.88,
+    "initial_stop": 491.88,
+    "target": 577.8,
+    "status": "pending",
+    "breakeven": false,
+    "last_checked": null
   }
 ]
