@@ -368,7 +368,7 @@
     "target": 288.3,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-25T15:31:00+05:30",
+    "last_checked": "2026-11-26T11:05:00+05:30",
     "fill": 258.76,
     "opened": "2026-11-12T11:15:00+05:30"
   },
@@ -400,7 +400,7 @@
     "target": 10769.81,
     "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-25T15:31:00+05:30",
+    "last_checked": "2026-11-26T11:05:00+05:30",
     "fill": 9949.5,
     "opened": "2026-11-13T09:15:00+05:30"
   },
@@ -416,7 +416,7 @@
     "target": 823.81,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-25T15:31:00+05:30",
+    "last_checked": "2026-11-26T11:05:00+05:30",
     "fill": 767.57,
     "opened": "2026-11-12T11:25:00+05:30"
   },
@@ -453,7 +453,7 @@
     "target": 572.23,
     "status": "open",
     "breakeven": true,
-    "last_checked": "2026-11-25T15:31:00+05:30",
+    "last_checked": "2026-11-26T11:05:00+05:30",
     "fill": 517.47,
     "opened": "2026-11-17T09:25:00+05:30"
   },
@@ -602,7 +602,7 @@
     "target": 1757.61,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-25T15:31:00+05:30"
+    "last_checked": "2026-11-26T11:05:00+05:30"
   },
   {
     "id": "JSWINFRA-2026-11-25T1105",
@@ -614,9 +614,11 @@
     "stop": 345.1,
     "initial_stop": 345.1,
     "target": 395.08,
-    "status": "pending",
+    "status": "open",
     "breakeven": false,
-    "last_checked": "2026-11-25T15:31:00+05:30"
+    "last_checked": "2026-11-26T11:05:00+05:30",
+    "fill": 361.76,
+    "opened": "2026-11-26T09:15:00+05:30"
   },
   {
     "id": "COHANCE-2026-11-25T1105",
@@ -630,7 +632,7 @@
     "target": 577.8,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-25T15:31:00+05:30"
+    "last_checked": "2026-11-26T11:05:00+05:30"
   },
   {
     "id": "INDIGO-2026-11-25T1305",
@@ -644,7 +646,7 @@
     "target": 6221.38,
     "status": "pending",
     "breakeven": false,
-    "last_checked": "2026-11-25T15:31:00+05:30"
+    "last_checked": "2026-11-26T11:05:00+05:30"
   },
   {
     "id": "ACE-2026-11-26T1104",
@@ -658,7 +660,7 @@
     "target": 1401.19,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-11-26T11:05:00+05:30"
   },
   {
     "id": "PRESTIGE-2026-11-26T1104",
@@ -672,6 +674,6 @@
     "target": 1918.5,
     "status": "pending",
     "breakeven": false,
-    "last_checked": null
+    "last_checked": "2026-11-26T11:05:00+05:30"
   }
 ]
